@@ -48,14 +48,7 @@ pipeline {
             }
         }
             
-        stage('deploy') {
-            steps {
-                sshagent(['deploy_user']) {
-                   sh "scp -o StrictHostKeyChecking=no -T target/**.war target/01-maven-web-app.war ubuntu@34.227.86.216:/opt/tomcat/webapps"
-                    
-                       }
-            }
-        }
+        
         
        stage('Stage-9 : Deployment - Deploy a Artifact devops-3.0.0-SNAPSHOT.war file to Tomcat Server') { 
             steps {
