@@ -47,9 +47,7 @@ pipeline {
                 sh ('mvn install');
             }
         }
-            
-        
-        
+           
        stage('Stage-9 : Deployment - Deploy a Artifact devops-3.0.0-SNAPSHOT.war file to Tomcat Server') { 
             steps {
                 sh 'curl -u admin:redhat@123 -T target/**.war "http://34.227.86.216:8080/manager/text/deploy?path=/uday&update=true"'
