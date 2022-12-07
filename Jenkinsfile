@@ -51,7 +51,7 @@ pipeline {
         stage('deploy') {
             steps {
                 sshagent(['deploy_user']) {
-                   sh "scp -o StrictHostKeyChecking=no -T target/**.war target/01-maven-web-app.war ubuntu@44.205.2.96:/opt/tomcat/webapps"
+                   sh "scp -o StrictHostKeyChecking=no -T target/**.war target/01-maven-web-app.war ubuntu@34.227.86.216:/opt/tomcat/webapps"
                     
                        }
             }
@@ -59,13 +59,13 @@ pipeline {
         
        stage('Stage-9 : Deployment - Deploy a Artifact devops-3.0.0-SNAPSHOT.war file to Tomcat Server') { 
             steps {
-                sh 'curl -u admin:redhat@123 -T target/**.war "http://44.205.2.96:8080/manager/text/deploy?path=/uday&update=true"'
+                sh 'curl -u admin:redhat@123 -T target/**.war "http://34.227.86.216:8080/manager/text/deploy?path=/uday&update=true"'
             }
         } 
   
           stage('Stage-10 : SmokeTest') { 
             steps {
-                sh 'curl --retry-delay 10 --retry 5 "http://44.205.2.96:8080/uday"'
+                sh 'curl --retry-delay 10 --retry 5 "http://34.227.86.216:8080/uday"'
             }
         }   
     }
